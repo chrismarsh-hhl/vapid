@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import TemplateCompiler from '../lib/TemplateCompiler';
+import TemplateCompiler from '../lib/TemplateCompiler/index.js';
+import { __dirname } from '../lib/utils/index.js';
 
 /**
  * Constructor

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { join, resolve } from 'path';
-import Database from '../../lib/Database';
+import Database from '../../lib/Database/index.js';
+import { __dirname } from '../../lib/utils/index.js';
 
 const dbFile = resolve(__dirname, '../test.sqlite');
 

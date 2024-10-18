@@ -1,5 +1,7 @@
-import BaseDirective from '../../lib/directives/base';
-const ImageDirective = require('../../lib/directives/image')(BaseDirective);
+import BaseDirective from '../../lib/directives/base.js';
+import ImageDirectiveFunction from '../../lib/directives/image';
+
+const ImageDirective = ImageDirectiveFunction(BaseDirective);
 
 const vanilla = new ImageDirective();
 

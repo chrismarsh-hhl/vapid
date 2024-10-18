@@ -95,8 +95,8 @@
     "umzug": "^3.8.2",
     "unfurl.js": "^6.4.0",
     "update-notifier": "^7.3.1",
-    "webpack": "^5.95.0",
-    "write-pkg": "^7.0.0"
+    "webpack": "^4",
+    "write-package": "^7.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",

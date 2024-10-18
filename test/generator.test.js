@@ -2,8 +2,8 @@ import fs from 'fs';
 import tmp from 'tmp';
 import { join } from 'path';
 
-import Generator from '../lib/generator';
-import { Utils } from '../lib/utils';
+import Generator from '../lib/generator.js';
+import { Utils } from '../lib/utils/index.js';
 
 let target;
 

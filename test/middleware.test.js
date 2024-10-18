@@ -6,7 +6,7 @@ import { existsSync, statSync } from 'fs';
 import { join, resolve } from 'path';
 import imageSize from 'image-size';
 import middleware from '../lib/runners/VapidServer/middleware';
-import Utils from '../lib/utils';
+import { Utils, __dirname } from '../lib/utils/index.js';
 
 let app;
 let server;

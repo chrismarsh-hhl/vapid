@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 import UriPathAnalyzer from '../../lib/services/uri_path_analyzer';
+import { __dirname } from '../../lib/utils/index.js';
 
 const templateDir = resolve(__dirname, '../fixtures/site/www');
 

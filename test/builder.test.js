@@ -2,8 +2,8 @@ import fs from 'fs';
 import { resolve } from 'path';
 import tmp from 'tmp';
 
-import Builder from '../lib/Database/Builder';
-import { Utils } from '../lib/utils';
+import Builder from '../lib/Database/Builder.js';
+import { Utils, __dirname } from '../lib/utils/index.js';
 
 const templatesDir = resolve(__dirname, 'fixtures', 'builder');
 

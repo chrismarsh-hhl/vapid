@@ -1,5 +1,7 @@
-import BaseDirective from '../../lib/directives/base';
-const DateDirective = require('../../lib/directives/date')(BaseDirective);
+import BaseDirective from '../../lib/directives/base.js';
+import DateDirectiveFunction from '../../lib/directives/date';
+
+const DateDirective = DateDirectiveFunction(BaseDirective);
 
 const vanilla = new DateDirective();
 const date = '2015-10-21';

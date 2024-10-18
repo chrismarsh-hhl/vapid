@@ -1,5 +1,7 @@
-import BaseDirective from '../../lib/directives/base';
-const NumberDirective = require('../../lib/directives/number')(BaseDirective);
+import BaseDirective from '../../lib/directives/base.js';
+import NumberDirectiveFunction from '../../lib/directives/number';
+
+const NumberDirective = NumberDirectiveFunction(BaseDirective);
 
 const vanilla = new NumberDirective();
 
