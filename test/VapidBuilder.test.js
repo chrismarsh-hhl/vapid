@@ -1,9 +1,9 @@
-const recursive = require('recursive-readdir');
-const { resolve, relative } = require('path');
-const tmp = require('tmp');
+import recursive from 'recursive-readdir';
+import { resolve, relative } from 'path';
+import tmp from 'tmp';
 
-const VapidBuilder = require('../lib/runners/VapidBuilder');
-const { Utils } = require('../lib/utils');
+import VapidBuilder from '../lib/runners/VapidBuilder';
+import { Utils } from '../lib/utils';
 
 const templatesDir = resolve(__dirname, 'fixtures', 'site');
 

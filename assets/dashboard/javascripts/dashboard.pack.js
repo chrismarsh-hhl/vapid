@@ -1,7 +1,7 @@
-const jQuery = require('jquery');
+import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
 
-const Turbolinks = require('turbolinks');
+import Turbolinks from 'turbolinks';
 Turbolinks.start();
 
 // TODO: Include as packages

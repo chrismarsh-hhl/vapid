@@ -1,9 +1,9 @@
-const fs = require('fs');
-const { resolve } = require('path');
-const tmp = require('tmp');
+import fs from 'fs';
+import { resolve } from 'path';
+import tmp from 'tmp';
 
-const Builder = require('../lib/Database/Builder');
-const { Utils } = require('../lib/utils');
+import Builder from '../lib/Database/Builder';
+import { Utils } from '../lib/utils';
 
 const templatesDir = resolve(__dirname, 'fixtures', 'builder');
 

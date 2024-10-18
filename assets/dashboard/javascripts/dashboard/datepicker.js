@@ -1,4 +1,4 @@
-const flatpickr = require('flatpickr');
+import flatpickr from 'flatpickr';
 const dateFormat = 'F j, Y'
 const timeFormat = 'h:i K'
 

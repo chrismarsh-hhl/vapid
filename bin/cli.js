@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-const path = require('path');
+import path from 'path';
 
-const program = require('commander');
-const updateNotifier = require('update-notifier');
+import program from 'commander';
+import updateNotifier from 'update-notifier';
 
-const pkg = require('../package.json');
-const services = require('../lib/services');
-const Generator = require('../lib/generator');
-const { Logger } = require('../lib/utils');
-const VapidServer = require('../lib/runners/VapidServer');
-const VapidBuilder = require('../lib/runners/VapidBuilder');
-const VapidDeployer = require('../lib/runners/VapidDeployer');
+import pkg from '../package.json';
+import services from '../lib/services';
+import Generator from '../lib/generator';
+import { Logger } from '../lib/utils';
+import VapidServer from '../lib/runners/VapidServer';
+import VapidBuilder from '../lib/runners/VapidBuilder';
+import VapidDeployer from '../lib/runners/VapidDeployer';
 
 function withVapid(command) {
   return async (target) => {

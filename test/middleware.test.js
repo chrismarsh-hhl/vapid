@@ -1,12 +1,12 @@
-const crypto = require('crypto');
-const supertest = require('supertest');
-const Koa = require('koa');
-const tmp = require('tmp');
-const { existsSync, statSync } = require('fs');
-const { join, resolve } = require('path');
-const imageSize = require('image-size');
-const middleware = require('../lib/runners/VapidServer/middleware');
-const Utils = require('../lib/utils');
+import crypto from 'crypto';
+import supertest from 'supertest';
+import Koa from 'koa';
+import tmp from 'tmp';
+import { existsSync, statSync } from 'fs';
+import { join, resolve } from 'path';
+import imageSize from 'image-size';
+import middleware from '../lib/runners/VapidServer/middleware';
+import Utils from '../lib/utils';
 
 let app;
 let server;

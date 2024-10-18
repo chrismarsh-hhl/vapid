@@ -1,9 +1,9 @@
-const fs = require('fs');
-const tmp = require('tmp');
-const { join } = require('path');
+import fs from 'fs';
+import tmp from 'tmp';
+import { join } from 'path';
 
-const Generator = require('../lib/generator');
-const { Utils } = require('../lib/utils');
+import Generator from '../lib/generator';
+import { Utils } from '../lib/utils';
 
 let target;
 

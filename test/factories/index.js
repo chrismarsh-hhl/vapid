@@ -1,6 +1,6 @@
-const fs = require('fs');
-const { join, resolve } = require('path');
-const Database = require('../../lib/Database');
+import fs from 'fs';
+import { join, resolve } from 'path';
+import Database from '../../lib/Database';
 
 const dbFile = resolve(__dirname, '../test.sqlite');
 

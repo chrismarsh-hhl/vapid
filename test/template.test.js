@@ -1,6 +1,6 @@
-const { readFileSync } = require('fs');
-const { resolve } = require('path');
-const TemplateCompiler = require('../lib/TemplateCompiler');
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import TemplateCompiler from '../lib/TemplateCompiler';
 
 /**
  * Constructor

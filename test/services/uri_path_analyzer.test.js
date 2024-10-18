@@ -1,5 +1,5 @@
-const { resolve } = require('path');
-const UriPathAnalyzer = require('../../lib/services/uri_path_analyzer');
+import { resolve } from 'path';
+import UriPathAnalyzer from '../../lib/services/uri_path_analyzer';
 
 const templateDir = resolve(__dirname, '../fixtures/site/www');
 
