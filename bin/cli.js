@@ -5,21 +5,21 @@ import { Command } from 'commander';
 import updateNotifier from 'update-notifier';
 
 import pkg from '../package.json' assert { type: 'json' };
-import * as services from '../lib/services/index.js';
+import { PortChecker } from '../lib/services/index.js';
 import Generator from '../lib/generator.js';
 import { Logger } from '../lib/utils/index.js';
 import VapidServer from '../lib/runners/VapidServer/index.js';
 import VapidBuilder from '../lib/runners/VapidBuilder/index.js';
 import VapidDeployer from '../lib/runners/VapidDeployer/index.js';
-import { assert } from 'console';
 
 const program = new Command();
 
 function withVapid(command) {
   return async (target) => {
     try {
-      const cwd = target instanceof program.Command ? process.cwd() : target;
+      const cwd = typeof target !== 'string' ? process.cwd() : target;
       const vapid = new VapidServer(cwd);
+      await vapid.initialize(cwd);
 
       updateNotifier({ pkg }).notify({ isGlobal: true });
       await command(vapid);
@@ -59,8 +59,7 @@ program
   .command('start')
   .description('start the server')
   .action(withVapid(async (vapid) => {
-    const portInUse = await new services.PortChecker(vapid.config.port).perform();
-    // const portInUse = await new PortChecker(vapid.config.port).perform();
+    const portInUse = await new PortChecker(vapid.config.port).perform();
 
     if (portInUse) {
       throw new Error(`Could not start server, port ${vapid.config.port} is already in use.`);
@@ -85,6 +84,7 @@ program
   .action(async (target) => {
     const cwd = typeof target !== 'string' ? process.cwd() : target;
     const vapid = new VapidDeployer(cwd);
+    await vapid.initialize(cwd);
     await vapid.deploy();
     process.exit(0);
   });
@@ -105,6 +105,7 @@ program
     const cwd = typeof target !== 'string' ? process.cwd() : target;
     const destDir = typeof dist !== 'string' ? path.join(process.cwd(), 'dist') : dest;
     const vapid = new VapidBuilder(cwd);
+    await vapid.initialize(cwd);
     await vapid.build(destDir);
     process.exit(0);
   });

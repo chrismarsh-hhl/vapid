@@ -5,14 +5,14 @@ import tmp from 'tmp';
 import VapidBuilder from '../lib/runners/VapidBuilder.js';
 import { Utils, __dirname } from '../lib/utils/index.js';
 
-const templatesDir = resolve(__dirname, 'fixtures', 'site');
+const templatesDir = resolve(__dirname, '../fixtures', 'site');
 
 describe('VapidBuilder', () => {
   test('builds a static site when pointed at a site directory', async () => {
     const inputDir = tmp.tmpNameSync();
     Utils.copyFiles(templatesDir, inputDir);
 
-    const builder = new VapidBuilder(inputDir);
+    const builder = await VapidBuilder.initialize(inputDir);
     const outputDir = tmp.tmpNameSync();
     await builder.build(outputDir);
 

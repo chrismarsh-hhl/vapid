@@ -5,7 +5,7 @@ import { join } from 'path';
 import { version } from '../package.json';
 import { __dirname } from '../lib/utils/index.js';
 
-const bin = join(__dirname, '../bin/cli.js');
+const bin = join(__dirname, '../../bin/cli.js');
 
 function cmd(args = '') {
   return execSync(`${bin} ${args}`, { encoding: 'utf-8' });

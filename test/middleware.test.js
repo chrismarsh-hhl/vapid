@@ -43,7 +43,7 @@ describe('image processing', () => {
   const tmpDir = tmp.dirSync().name;
   const paths = {
     cache: tmpDir,
-    www: resolve(__dirname, 'fixtures/site/www'),
+    www: resolve(__dirname, '../fixtures/site/www'),
   };
 
   beforeEach(() => {

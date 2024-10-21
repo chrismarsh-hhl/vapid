@@ -1,5 +1,5 @@
 import net from 'net';
-import PortChecker from '../../lib/services/port_checker';
+import { PortChecker } from '../../lib/services/port_checker';
 
 describe('#perform', () => {
   test('sees if port is already in use', async () => {

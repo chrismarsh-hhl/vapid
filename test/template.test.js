@@ -8,7 +8,7 @@ import { __dirname } from '../lib/utils/index.js';
  */
 describe('.constructor', () => {
   test('replaces partial with file contents', () => {
-    const partials = [resolve(__dirname, 'fixtures', '_partial.html')];
+    const partials = [resolve(__dirname, '../fixtures', '_partial.html')];
     const partialContent = readFileSync(partials[0], 'utf-8');
     const template = new TemplateCompiler('{{> partial}}', { partial: partialContent });
 
@@ -31,7 +31,7 @@ describe('.constructor', () => {
  */
 describe('.fromFile', () => {
   test('creates new instance from a file path', () => {
-    const filePath = resolve(__dirname, 'fixtures/basic.html');
+    const filePath = resolve(__dirname, '../fixtures/basic.html');
     const template = TemplateCompiler.fromFile(filePath);
     const html = readFileSync(filePath, 'utf-8');
 
@@ -39,7 +39,7 @@ describe('.fromFile', () => {
   });
 
   test('reads partials from disk', () => {
-    const basePath = resolve(__dirname, 'fixtures');
+    const basePath = resolve(__dirname, '../fixtures');
     const filePath = resolve(basePath, 'with_partials.html');
     const partials = [
       resolve(basePath, '_partial.html'),

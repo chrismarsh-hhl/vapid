@@ -1,4 +1,4 @@
-import RecordPositionUpdater from '../../lib/services/record_position_updater';
+import { RecordPositionUpdater } from '../../lib/services/record_position_updater';
 import { SectionFactory } from '../factories';
 
 let section;

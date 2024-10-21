@@ -5,7 +5,7 @@ import tmp from 'tmp';
 import Builder from '../lib/Database/Builder.js';
 import { Utils, __dirname } from '../lib/utils/index.js';
 
-const templatesDir = resolve(__dirname, 'fixtures', 'builder');
+const templatesDir = resolve(__dirname, '../fixtures', 'builder');
 
 describe('#tree', () => {
   test('creates tree from multiple files', () => {
