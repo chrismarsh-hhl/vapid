@@ -1,5 +1,7 @@
+@import "variables";
+
 .section {
-  padding: 4rem 2rem; 
+  padding: 4rem 2rem;
   border-bottom: 1px solid $grey-lighterer;
 
   &:last-of-type {

@@ -1,18 +1,22 @@
-*, *:before, *:after {
+@use "sass:color";
+
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
 }
 
 html {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-size: 62.5%;
   box-sizing: border-box;
 }
 
 body {
   font-size: 1.6rem;
-  color: #04092E;
+  color: #04092e;
   text-align: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,11 +25,11 @@ body {
 }
 
 a {
-  color: #FFC9E2;
+  color: #ffc9e2;
   transition: 0.1s linear;
 
   &:hover {
-    color: darken(#FFC9E2, 10%);
+    color: color.adjust(#ffc9e2, $lightness: -10%);
   }
 }
 
@@ -50,8 +54,8 @@ p {
   font-weight: 800;
   text-transform: uppercase;
   text-decoration: none;
-  color: #04092E;
-  background: #FFC9E2;
+  color: #04092e;
+  background: #ffc9e2;
   border-radius: 4px;
   cursor: pointer;
 
@@ -61,7 +65,7 @@ p {
 
   &:hover {
     color: white;
-    background-color: darken(#FFC9E2, 10%);
+    background-color: color.adjust(#ffc9e2, $lightness: -10%);
   }
 }
 
@@ -70,7 +74,7 @@ p {
   flex-direction: column;
   justify-content: center;
   color: white;
-  background: #04092E;
+  background: #04092e;
 
   @media screen and (min-width: 960px) {
     display: flex;
@@ -79,7 +83,8 @@ p {
     padding-bottom: 8rem;
   }
 
-  h1, h2 {
+  h1,
+  h2 {
     margin-bottom: 4rem;
     max-width: 100%;
     line-height: 1.1em;
@@ -91,11 +96,11 @@ p {
     flex-direction: column;
     flex: 1;
     justify-content: center;
-    font-family: 'Monoton', cursive;
+    font-family: "Monoton", cursive;
     font-size: 6rem;
     font-weight: normal;
     width: 1350px;
-    color: #FFC9E2;
+    color: #ffc9e2;
     margin-left: auto;
     margin-right: auto;
 
@@ -137,10 +142,10 @@ section {
   }
 
   a {
-    color: darken(#FFC9E2, 20%);
+    color: color.adjust(#ffc9e2, $lightness: -20%);
 
     &:hover {
-      color: darken(#FFC9E2, 30%);
+      color: color.adjust(#ffc9e2, $lightness: -30%);
     }
   }
 }
@@ -165,12 +170,12 @@ form {
     font-size: inherit;
   }
 
-  input:not([type=submit]),
+  input:not([type="submit"]),
   textarea {
     width: 100%;
     padding: 1rem;
-    color: #04092E;
-    border: 1px solid #04092E;
+    color: #04092e;
+    border: 1px solid #04092e;
     outline: 0;
   }
 

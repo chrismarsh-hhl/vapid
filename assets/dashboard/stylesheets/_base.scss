@@ -1,4 +1,9 @@
-*, *:before, *:after {
+@import "variables";
+@import "mixins";
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
@@ -42,8 +47,12 @@ a {
 
 .floated {
   @include desktop {
-    &.right { float: right; }
-    &.left  { float: left; }
+    &.right {
+      float: right;
+    }
+    &.left {
+      float: left;
+    }
   }
 }
 

@@ -1,29 +1,29 @@
-@import "variables";
-@import "mixins";
-@import "animations";
-@import "base";
-@import "layout";
-@import "forms";
-@import "typography";
-@import "buttons";
-@import "sections";
-@import "tables";
-@import "navbar";
-@import "sidebar";
-@import "wysiwyg";
-@import "main";
-@import "footer";
+@use "variables";
+@use "mixins";
+@use "animations";
+@use "base";
+@use "layout";
+@use "forms";
+@use "typography";
+@use "buttons";
+@use "sections";
+@use "tables";
+@use "navbar";
+@use "sidebar";
+@use "wysiwyg";
+@use "main";
+@use "footer";
 
-@import "auth";
-@import "error";
+@use "auth";
+@use "error";
 
 // Semantic UI (w/ some overrides)
-@import "semantic/checkbox";
-@import "semantic/dropdown";
-@import "semantic/icon";
-@import "semantic/label";
-@import "semantic/message";
-@import "semantic/transition";
+@use "semantic/checkbox";
+@use "semantic/dropdown";
+@use "semantic/icon";
+@use "semantic/label";
+@use "semantic/message";
+@use "semantic/transition";
 
 // Flatpickr
-@import "~flatpickr/dist/flatpickr.min";
+@use "~flatpickr/dist/flatpickr.min";

@@ -1,3 +1,6 @@
+@import "variables";
+@import "mixins";
+
 .navbar {
   position: relative;
   height: 5.6rem;
@@ -37,7 +40,7 @@
         .transition.menu {
           flex-direction: column;
           margin-top: 1rem;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
           border-radius: 0.5rem;
           border-width: 1px;
           min-width: 34rem;
@@ -69,7 +72,7 @@
 
           &:before {
             display: inline-block;
-            content: '';
+            content: "";
             width: 0.8rem;
             height: 0.8rem;
             border-radius: 100%;
@@ -154,7 +157,7 @@
 
     &:before {
       display: inline-block;
-      content: url('../images/view.svg');
+      content: url("../images/view.svg");
       vertical-align: middle;
 
       @include desktop {
@@ -163,14 +166,14 @@
     }
 
     &.build {
-      @extend .orange;
+      @extend .orange !optional;
 
       &:hover {
         opacity: 1;
       }
 
       &:before {
-        content: url('../images/build.svg');
+        content: url("../images/build.svg");
       }
     }
   }
