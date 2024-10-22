@@ -2,7 +2,7 @@ import recursive from 'recursive-readdir';
 import { resolve, relative } from 'path';
 import tmp from 'tmp';
 
-import VapidBuilder from '../lib/runners/VapidBuilder.js';
+import VapidBuilder from '../lib/runners/VapidBuilder/index.js';
 import { Utils, __dirname } from '../lib/utils/index.js';
 
 const templatesDir = resolve(__dirname, '../fixtures', 'site');

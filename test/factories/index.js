@@ -7,7 +7,7 @@ const dbFile = resolve(__dirname, '../../test.sqlite');
 
 try {
   fs.unlinkSync(dbFile);
-} catch (err) {
+} catch (_err) {
   // Do nothing
 }
 

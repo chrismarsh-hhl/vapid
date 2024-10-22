@@ -1162,7 +1162,7 @@
           parent = rule.parentStyleSheet;
           href = this.generateCacheBustUrl(rule.href);
           media = rule.media.length ? [].join.call(rule.media, ', ') : '';
-          newRule = `@use url("${href}") ${media};` as *;
+          newRule = `@use url("${href}") ${media};`
           rule.__LiveReload_newHref = href;
           tempLink = this.document.createElement('link');
           tempLink.rel = 'stylesheet';
