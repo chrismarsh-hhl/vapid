@@ -1,4 +1,4 @@
-const sortable = require('../../vendor/html5sortable');
+import sortable from '../../vendor/html5sortable';
 
 document.addEventListener("turbolinks:load", () => {
   const $el = $('.draggable.table tbody');

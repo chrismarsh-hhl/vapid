@@ -1,35 +1,38 @@
+@use "sass:color" as color;
+
 // Colors
 $grey-darkest: #111111;
 $grey-darkerer: #333333;
-$grey-darker: #4A4A4A;
+$grey-darker: #4a4a4a;
 $grey-dark: #979797;
-$grey: #9B9B9B;
-$grey-light: #CCCCCC;
-$grey-lighter: #D8D8D8;
-$grey-lighterer: #EEEEEE;
-$grey-lightest: #F4F4F4;
+$grey: #9b9b9b;
+$grey-light: #cccccc;
+$grey-lighter: #d8d8d8;
+$grey-lighterer: #eeeeee;
+$grey-lightest: #f4f4f4;
 
-$blue-dark: #2765AE;
-$blue: #4080CA;
-$blue-light: #4A90E2;
+$blue-dark: #2765ae;
+$blue: #4080ca;
+$blue-light: #4a90e2;
 
-$purple-darker: #4A0C80;
-$purple-dark: #6C0CC0;
-$purple: #9630D5;
-$purple-light: #C982DC;
+$purple-darker: #4a0c80;
+$purple-dark: #6c0cc0;
+$purple: #9630d5;
+$purple-light: #c982dc;
 
-$orange: #E7C64E;
-$orange-dark: #F7A01C;
-$orange-darker: #F1B045;
+$orange: #e7c64e;
+$orange-dark: #f7a01c;
+$orange-darker: #f1b045;
 
-$red-darker: #9F041B;
-$red-dark: #C30A1B;
-$red: #D0021B;
-$red-light: lighten($red, 20%);
-$red-lighter: #FFF6F6;
+$red-darker: #9f041b;
+$red-dark: #c30a1b;
+$red: #d0021b;
+$red-light: color.adjust($red, $lightness: 20%);
+$red-lighter: #fff6f6;
 
 // Typography
-$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",sans-serif;
+$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
 // Dimensions
 $border-radius: 2px;

@@ -1,5 +1,7 @@
-const BaseDirective = require('../../lib/directives/base');
-const LinkDirective = require('../../lib/directives/link')(BaseDirective);
+import BaseDirective from '../../lib/directives/base.js';
+import LinkDirectiveFunction from '../../lib/directives/link';
+
+const LinkDirective = LinkDirectiveFunction(BaseDirective);
 
 const vanilla = new LinkDirective();
 

@@ -1,11 +1,11 @@
-const fs = require('fs');
-const { resolve } = require('path');
-const tmp = require('tmp');
+import fs from 'fs';
+import { resolve } from 'path';
+import tmp from 'tmp';
 
-const Builder = require('../lib/Database/Builder');
-const { Utils } = require('../lib/utils');
+import Builder from '../lib/Database/Builder.js';
+import { Utils, __dirname } from '../lib/utils/index.js';
 
-const templatesDir = resolve(__dirname, 'fixtures', 'builder');
+const templatesDir = resolve(__dirname, '../fixtures', 'builder');
 
 describe('#tree', () => {
   test('creates tree from multiple files', () => {
@@ -45,7 +45,11 @@ describe('#tree', () => {
 
     const builder = new Builder(tmpDir);
 
-    expect(Object.keys(builder.tree.general.fields)).toEqual(['name', 'foo', 'bar']);
+    expect(Object.keys(builder.tree.general.fields)).toEqual([
+      'name',
+      'foo',
+      'bar',
+    ]);
     expect(Object.keys(builder.tree.child.fields)).toEqual([]);
 
     Utils.removeFiles(tmpDir);

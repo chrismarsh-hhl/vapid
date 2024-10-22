@@ -1,4 +1,4 @@
-const BaseDirective = require('../../lib/directives/base');
+import BaseDirective from '../../lib/directives/base.js';
 
 const vanilla = new BaseDirective();
 

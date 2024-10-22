@@ -1,12 +1,13 @@
-const fs = require('fs');
-const { join, resolve } = require('path');
-const Database = require('../../lib/Database');
+import fs from 'fs';
+import { join, resolve } from 'path';
+import Database from '../../lib/Database/index.js';
+import { __dirname } from '../../lib/utils/index.js';
 
-const dbFile = resolve(__dirname, '../test.sqlite');
+const dbFile = resolve(__dirname, '../../test.sqlite');
 
 try {
   fs.unlinkSync(dbFile);
-} catch (err) {
+} catch (_err) {
   // Do nothing
 }
 

@@ -1,5 +1,7 @@
-const faker = require('faker');
+import faker from 'faker';
 
-module.exports = () => ({
+const factory = () => ({
   name: faker.lorem.word(),
 });
+
+export default factory;

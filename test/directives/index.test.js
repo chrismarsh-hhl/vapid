@@ -1,4 +1,4 @@
-const directives = require('../../lib/directives');
+import directives from '../../lib/directives/index.js';
 
 describe('.find', () => {
   test('fallback to TextDirective', () => {

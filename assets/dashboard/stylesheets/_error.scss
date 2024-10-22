@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 body.error {
   display: flex;
   flex-direction: column;
@@ -31,14 +34,15 @@ body.error {
     display: none;
 
     @include desktop {
-      display: block;      
+      display: block;
     }
   }
 
   &.trace {
     display: block;
 
-    pre, .table {
+    pre,
+    .table {
       font-size: 1.4rem;
     }
   }

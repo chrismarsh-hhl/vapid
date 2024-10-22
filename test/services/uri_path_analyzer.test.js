@@ -1,7 +1,8 @@
-const { resolve } = require('path');
-const UriPathAnalyzer = require('../../lib/services/uri_path_analyzer');
+import { resolve } from 'path';
+import { UriPathAnalyzer } from '../../lib/services/uri_path_analyzer';
+import { __dirname } from '../../lib/utils/index.js';
 
-const templateDir = resolve(__dirname, '../fixtures/site/www');
+const templateDir = resolve(__dirname, '../../fixtures/site/www');
 
 describe('#perform', () => {
   test('finds from the path', () => {
@@ -31,12 +32,18 @@ describe('#perform', () => {
 
   test('extracts sectionName and recordId', () => {
     // Old format
-    let results = new UriPathAnalyzer('/offices/123/testing', templateDir).perform();
+    let results = new UriPathAnalyzer(
+      '/offices/123/testing',
+      templateDir,
+    ).perform();
     expect(results[1]).toEqual('offices');
     expect(results[2]).toEqual('123');
 
     // New format
-    results = new UriPathAnalyzer('/offices/testing-123', templateDir).perform();
+    results = new UriPathAnalyzer(
+      '/offices/testing-123',
+      templateDir,
+    ).perform();
     expect(results[1]).toEqual('offices');
     expect(results[2]).toEqual('123');
 

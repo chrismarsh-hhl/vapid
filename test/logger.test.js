@@ -1,4 +1,4 @@
-const { Logger } = require('../lib/utils');
+import { Logger } from '../lib/utils/index.js';
 
 let output;
 

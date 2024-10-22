@@ -1,17 +1,20 @@
-const RecordPositionUpdater = require('../../lib/services/record_position_updater');
-const { SectionFactory } = require('../factories');
+import { RecordPositionUpdater } from '../../lib/services/record_position_updater';
+import { SectionFactory } from '../factories/index.js';
 
 let section;
 let record;
 
 describe('#perform', () => {
   beforeAll(async () => {
-    section = await SectionFactory({
-      sortable: true,
-      records: [{}, {}, {}],
-    }, {
-      include: ['records'],
-    });
+    section = await SectionFactory(
+      {
+        sortable: true,
+        records: [{}, {}, {}],
+      },
+      {
+        include: ['records'],
+      },
+    );
 
     record = await section.createRecord({});
   });

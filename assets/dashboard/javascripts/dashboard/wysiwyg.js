@@ -1,15 +1,15 @@
-const Quill = require('quill');
+import Quill from 'quill';
 
 const Delta = Quill.import('delta');
 const Break = Quill.import('blots/break');
 const Embed = Quill.import('blots/embed');
 
 class Linebreak extends Break {
-  length () {
+  length() {
     return 1;
   }
 
-  value () {
+  value() {
     return '\n';
   }
 

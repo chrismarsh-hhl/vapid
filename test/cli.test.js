@@ -1,10 +1,11 @@
 // TODO: Remove execSync, and test Commander directly
 // Also, test other commands
-const { execSync } = require('child_process');
-const { join } = require('path');
-const { version } = require('../package.json');
+import { execSync } from 'child_process';
+import { join } from 'path';
+import { version } from '../package.json';
+import { __dirname } from '../lib/utils/index.js';
 
-const bin = join(__dirname, '../bin/cli.js');
+const bin = join(__dirname, '../../bin/cli.js');
 
 function cmd(args = '') {
   return execSync(`${bin} ${args}`, { encoding: 'utf-8' });
