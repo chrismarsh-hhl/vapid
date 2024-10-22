@@ -32,12 +32,18 @@ describe('#perform', () => {
 
   test('extracts sectionName and recordId', () => {
     // Old format
-    let results = new UriPathAnalyzer('/offices/123/testing', templateDir).perform();
+    let results = new UriPathAnalyzer(
+      '/offices/123/testing',
+      templateDir,
+    ).perform();
     expect(results[1]).toEqual('offices');
     expect(results[2]).toEqual('123');
 
     // New format
-    results = new UriPathAnalyzer('/offices/testing-123', templateDir).perform();
+    results = new UriPathAnalyzer(
+      '/offices/testing-123',
+      templateDir,
+    ).perform();
     expect(results[1]).toEqual('offices');
     expect(results[2]).toEqual('123');
 

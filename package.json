@@ -13,8 +13,8 @@
   },
   "type": "module",
   "scripts": {
-    "lint": "eslint bin lib",
-    "prettier": "prettier --write bin lib",
+    "lint": "eslint bin lib test",
+    "prettier": "prettier --write bin lib test",
     "test": "jest"
   },
   "engines": {
@@ -59,7 +59,6 @@
     "flatpickr": "^4.6.13",
     "form-data": "^4.0.1",
     "glob": "^11.0.0",
-    "got": "^14.4.3",
     "inquirer": "^12.0.0",
     "jquery": "^3.7.1",
     "koa": "^2.15.3",
@@ -77,6 +76,7 @@
     "koa-static": "^5.0.0",
     "koa-views": "^8.1.0",
     "koa-webpack": "^6.0.0",
+    "ky": "^1.7.2",
     "livereload": "^0.9.3",
     "lodash.escape": "^4.0.1",
     "lodash.merge": "^4.6.2",
@@ -106,6 +106,7 @@
     "write-package": "^7.1.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.25.8",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.12.0",
     "eslint": "^9.12.0",

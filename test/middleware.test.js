@@ -56,20 +56,18 @@ describe('image processing', () => {
 
   // TODO: Is there a better way to test next() being called than 404?
   it('only processes JPG/PNG/WEBP with a width/height param', (done) => {
-    request.get('/images/test.jpg')
-      .expect(404, done);
+    request.get('/images/test.jpg').expect(404, done);
 
-    request.get('/images/test.gif')
-      .expect(404, done);
+    request.get('/images/test.gif').expect(404, done);
 
     ['jpg', 'png', 'webp'].forEach((ext) => {
-      request.get(`/images/test.${ext}?w=400`)
-        .expect(200, done);
+      request.get(`/images/test.${ext}?w=400`).expect(200, done);
     });
   });
 
   it('resizes images that have width or height set', (done) => {
-    request.get('/images/test.jpg?w=400')
+    request
+      .get('/images/test.jpg?w=400')
       .expect('Content-Type', 'image/jpeg')
       .then((response) => {
         const dimensions = imageSize(response.body);
@@ -78,7 +76,8 @@ describe('image processing', () => {
       })
       .then(done);
 
-    request.get('/images/test.png?h=150')
+    request
+      .get('/images/test.png?h=150')
       .expect('Content-Type', 'image/png')
       .then((response) => {
         const dimensions = imageSize(response.body);
@@ -89,7 +88,8 @@ describe('image processing', () => {
   });
 
   it('crops images that have width and height set', (done) => {
-    request.get('/images/test.webp?w=200&h=200')
+    request
+      .get('/images/test.webp?w=200&h=200')
       .expect('Content-Type', 'image/webp')
       .then((response) => {
         const dimensions = imageSize(response.body);
@@ -101,17 +101,17 @@ describe('image processing', () => {
 
   it('caches resized images', (done) => {
     const url = '/images/test.jpg?w=600';
-    request.get(url)
-      .then(() => {
-        const filePath = join(paths.www, url.split('?')[0]);
-        const fileStats = statSync(filePath);
-        const cacheKey = crypto.createHash('md5')
-          .update(`${url}${fileStats.mtime}`)
-          .digest('hex');
-        const cachePath = join(paths.cache, `${cacheKey}.jpg`);
-        expect(existsSync(cachePath)).toBeTruthy();
-        done();
-      });
+    request.get(url).then(() => {
+      const filePath = join(paths.www, url.split('?')[0]);
+      const fileStats = statSync(filePath);
+      const cacheKey = crypto
+        .createHash('md5')
+        .update(`${url}${fileStats.mtime}`)
+        .digest('hex');
+      const cachePath = join(paths.cache, `${cacheKey}.jpg`);
+      expect(existsSync(cachePath)).toBeTruthy();
+      done();
+    });
   });
 });
 
@@ -127,13 +127,11 @@ describe('logs', () => {
  */
 describe('privateFiles', () => {
   it('passes normal paths', (done) => {
-    app.use(middleware.privateFiles)
-      .use((ctx) => {
-        ctx.body = '';
-      });
+    app.use(middleware.privateFiles).use((ctx) => {
+      ctx.body = '';
+    });
 
-    request.get('/test')
-      .expect(200, done);
+    request.get('/test').expect(200, done);
   });
 
   it('404 when paths starts with an underscore', (done) => {
@@ -148,8 +146,7 @@ describe('privateFiles', () => {
       })
       .use(middleware.privateFiles);
 
-    request.get('/_test')
-      .end(done);
+    request.get('/_test').end(done);
   });
 
   it('404 when paths starts with a period', (done) => {
@@ -164,8 +161,7 @@ describe('privateFiles', () => {
       })
       .use(middleware.privateFiles);
 
-    request.get('/.test')
-      .end(done);
+    request.get('/.test').end(done);
   });
 });
 
@@ -178,10 +174,14 @@ describe('security', () => {
   it('uses the default helmet config', (done) => {
     app.use(middleware.security);
 
-    request.get('/')
+    request
+      .get('/')
       .expect('X-DNS-Prefetch-Control', 'off')
       .expect('X-Frame-Options', 'SAMEORIGIN')
-      .expect('Strict-Transport-Security', 'max-age=15552000; includeSubDomains')
+      .expect(
+        'Strict-Transport-Security',
+        'max-age=15552000; includeSubDomains',
+      )
       .expect('X-Download-Options', 'noopen')
       .expect('X-Content-Type-Options', 'nosniff')
       .expect('X-XSS-Protection', '1; mode=block')
@@ -195,12 +195,12 @@ describe('security', () => {
 describe('session', () => {
   it('sets the vapid:sess as the key', (done) => {
     app.keys = ['secret'];
-    app.use(middleware.session(app))
-      .use((ctx) => {
-        ctx.session.test = 'test';
-      });
+    app.use(middleware.session(app)).use((ctx) => {
+      ctx.session.test = 'test';
+    });
 
-    request.get('/')
+    request
+      .get('/')
       .expect('Set-Cookie', /vapid:sess/)
       .end(done);
   });

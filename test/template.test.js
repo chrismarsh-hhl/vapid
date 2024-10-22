@@ -10,7 +10,9 @@ describe('.constructor', () => {
   test('replaces partial with file contents', () => {
     const partials = [resolve(__dirname, '../fixtures', '_partial.html')];
     const partialContent = readFileSync(partials[0], 'utf-8');
-    const template = new TemplateCompiler('{{> partial}}', { partial: partialContent });
+    const template = new TemplateCompiler('{{> partial}}', {
+      partial: partialContent,
+    });
 
     expect(template.html).toEqual(partialContent);
   });
@@ -68,25 +70,37 @@ describe('#parse', () => {
   });
 
   test('allow sections without keyword', () => {
-    const withKeyword = new TemplateCompiler('{{#section about}}{{/section}}').parse();
+    const withKeyword = new TemplateCompiler(
+      '{{#section about}}{{/section}}',
+    ).parse();
     const withoutKeyword = new TemplateCompiler('{{#about}}{{/about}}').parse();
 
-    expect(withKeyword['section about'].name).toEqual(withoutKeyword.about.name);
+    expect(withKeyword['section about'].name).toEqual(
+      withoutKeyword.about.name,
+    );
   });
 
-  /* eslint-disable quotes */
   test('parses parameters with optional quotes', () => {
-    const plain = new TemplateCompiler('{{test required=false}}').parse();
+    // prettier-ignore
+    const plain = new TemplateCompiler("{{test required=false}}").parse();
     const single = new TemplateCompiler(`{{test required='false'}}`).parse();
     const double = new TemplateCompiler('{{test required="false"}}').parse();
 
-    expect(plain.general.fields['test required=false'].params).toEqual(single.general.fields[`test required='false'`].params);
-    expect(plain.general.fields['test required=false'].params).toEqual(double.general.fields['test required="false"'].params);
+    expect(plain.general.fields['test required=false'].params).toEqual(
+      single.general.fields[`test required='false'`].params,
+    );
+    expect(plain.general.fields['test required=false'].params).toEqual(
+      double.general.fields['test required="false"'].params,
+    );
   });
 
   test('parses parameters with escaped quotes', () => {
-    const inTheMiddle = new TemplateCompiler(`{{test placeholder="Testing \\"quotes\\" in the middle."}}`).parse();
-    const mixed = new TemplateCompiler(`{{test placeholder="If this'll work"}}`).parse();
+    const inTheMiddle = new TemplateCompiler(
+      `{{test placeholder="Testing \\"quotes\\" in the middle."}}`,
+    ).parse();
+    const mixed = new TemplateCompiler(
+      `{{test placeholder="If this'll work"}}`,
+    ).parse();
 
     expect(inTheMiddle).toMatchSnapshot();
     expect(mixed).toMatchSnapshot();
@@ -94,7 +108,9 @@ describe('#parse', () => {
   /* eslint-enable quotes */
 
   test('parses order by clause', () => {
-    const orderBy = new TemplateCompiler('{{#section offices order=city,-name}}{{/section}}').parse();
+    const orderBy = new TemplateCompiler(
+      '{{#section offices order=city,-name}}{{/section}}',
+    ).parse();
     expect(orderBy).toMatchSnapshot();
   });
 
@@ -102,10 +118,7 @@ describe('#parse', () => {
     const conditional = '{{#if foo}}Foo{{/if}}';
 
     expect(new TemplateCompiler(conditional).parse()).toMatchSnapshot();
-    expect(new TemplateCompiler(
-      conditional,
-      {},
-    ).parse()).toMatchSnapshot();
+    expect(new TemplateCompiler(conditional, {}).parse()).toMatchSnapshot();
   });
 
   test('parses general references in sections correctly', () => {
@@ -115,7 +128,9 @@ describe('#parse', () => {
     `).parse();
 
     expect(Object.keys(template.general.fields)).toEqual(['test']);
-    expect(Object.keys(template['section child'].fields)).toEqual(['general.test']);
+    expect(Object.keys(template['section child'].fields)).toEqual([
+      'general.test',
+    ]);
   });
 });
 

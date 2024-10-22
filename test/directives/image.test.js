@@ -21,10 +21,14 @@ describe('#input', () => {
     // Non-required images can be deleted
     const directive = new ImageDirective({ required: false });
 
-    expect(directive.input('test', 'test.jpg')).toMatch(/input type="checkbox"/);
+    expect(directive.input('test', 'test.jpg')).toMatch(
+      /input type="checkbox"/,
+    );
     expect(directive.input('test')).not.toMatch(/input type="checkbox"/);
 
-    expect(vanilla.input('test', 'test.jpg')).not.toMatch(/input type="checkbox"/);
+    expect(vanilla.input('test', 'test.jpg')).not.toMatch(
+      /input type="checkbox"/,
+    );
     expect(vanilla.input('test')).not.toMatch(/input type="checkbox"/);
   });
 });

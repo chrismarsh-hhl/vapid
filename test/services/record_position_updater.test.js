@@ -6,12 +6,15 @@ let record;
 
 describe('#perform', () => {
   beforeAll(async () => {
-    section = await SectionFactory({
-      sortable: true,
-      records: [{}, {}, {}],
-    }, {
-      include: ['records'],
-    });
+    section = await SectionFactory(
+      {
+        sortable: true,
+        records: [{}, {}, {}],
+      },
+      {
+        include: ['records'],
+      },
+    );
 
     record = await section.createRecord({});
   });

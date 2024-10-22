@@ -45,7 +45,11 @@ describe('#tree', () => {
 
     const builder = new Builder(tmpDir);
 
-    expect(Object.keys(builder.tree.general.fields)).toEqual(['name', 'foo', 'bar']);
+    expect(Object.keys(builder.tree.general.fields)).toEqual([
+      'name',
+      'foo',
+      'bar',
+    ]);
     expect(Object.keys(builder.tree.child.fields)).toEqual([]);
 
     Utils.removeFiles(tmpDir);
