@@ -1,5 +1,5 @@
 import { RecordPositionUpdater } from '../../lib/services/record_position_updater';
-import { SectionFactory } from '../factories';
+import { SectionFactory } from '../factories/index.js';
 
 let section;
 let record;

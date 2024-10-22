@@ -167,7 +167,7 @@
           return this._scheduleReconnection();
         };
 
-        Connector.prototype._onerror = function (e) {};
+        Connector.prototype._onerror = function (e) { };
 
         Connector.prototype._onmessage = function (e) {
           return this.protocolParser.process(e.data);
@@ -314,11 +314,11 @@
           this.plugins = [];
           this.pluginIdentifiers = {};
           this.console = this.window.console && this.window.console.log && this.window.console.error ? this.window.location.href.match(/LR-verbose/) ? this.window.console : {
-            log() {},
+            log() { },
             error: this.window.console.error.bind(this.window.console),
           } : {
-            log() {},
-            error() {},
+            log() { },
+            error() { },
           };
           if (!(this.WebSocket = this.window.WebSocket || this.window.MozWebSocket)) {
             this.console.error('LiveReload disabled because the browser does not seem to support web sockets');
@@ -342,10 +342,10 @@
           this.reloader = new Reloader(this.window, this.console, Timer);
           this.connector = new Connector(this.options, this.WebSocket, Timer, {
             connecting: (function (_this) {
-              return function () {};
+              return function () { };
             }(this)),
             socketConnected: (function (_this) {
-              return function () {};
+              return function () { };
             }(this)),
             connected: (function (_this) {
               return function (protocol) {
@@ -1162,7 +1162,7 @@
           parent = rule.parentStyleSheet;
           href = this.generateCacheBustUrl(rule.href);
           media = rule.media.length ? [].join.call(rule.media, ', ') : '';
-          newRule = `@import url("${href}") ${media};`;
+          newRule = `@use url("${href}") ${media};` as *;
           rule.__LiveReload_newHref = href;
           tempLink = this.document.createElement('link');
           tempLink.rel = 'stylesheet';

@@ -1,5 +1,5 @@
 @use "../vendor/quill.snow";
-@import "variables";
+@use "variables" as *;
 
 .wysiwyg {
   cursor: text;

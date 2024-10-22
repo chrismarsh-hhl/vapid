@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
+import eslintConfigPrettier from "eslint-config-prettier";
+import babelEslintParser from '@babel/eslint-parser';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,6 +20,15 @@ export default [...compat.extends("airbnb-base"), {
   },
 
   languageOptions: {
+    parse: babelEslintParser,
+    "parserOptions": {
+      "requireConfigFile": false,
+      "babelOptions": {
+        "plugins": [
+          "@babel/plugin-syntax-import-assertions"
+        ]
+      }
+    },
     ecmaVersion: "latest",
     globals: {
       ...jest.environments.globals.globals,
@@ -31,8 +42,12 @@ export default [...compat.extends("airbnb-base"), {
     "no-continue": "off",
     "no-restricted-syntax": ["off", "ForOfLoop"],
     "no-restricted-globals": ["off", "isNaN"],
+    "no-unused-vars": ["warn", {
+      "argsIgnorePattern": "^_",
+    }],
     "import/prefer-default-export": "off",
     "import/extensions": "off",
-    "quotes": "double",
+    "quotes": ["warn", "single"],
   },
-}];
+},
+  eslintConfigPrettier];

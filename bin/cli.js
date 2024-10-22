@@ -25,7 +25,10 @@ function withVapid(command) {
       await command(vapid);
     } catch (err) {
       // TODO: Deployer throws err.message, handle better
-      const message = err.response && err.response.body ? err.response.body.message : err.message;
+      const message =
+        err.response && err.response.body
+          ? err.response.body.message
+          : err.message;
       Logger.error(message);
       process.exit(1);
     }
@@ -44,10 +47,7 @@ program
     Generator.copyTo(target);
 
     Logger.info('Site created.');
-    Logger.extra([
-      'To start the server now, run:',
-      `  vapid start ${target}`,
-    ]);
+    Logger.extra(['To start the server now, run:', `  vapid start ${target}`]);
   });
 
 /**
@@ -58,20 +58,24 @@ program
 program
   .command('start')
   .description('start the server')
-  .action(withVapid(async (vapid) => {
-    const portInUse = await new PortChecker(vapid.config.port).perform();
+  .action(
+    withVapid(async (vapid) => {
+      const portInUse = await new PortChecker(vapid.config.port).perform();
 
-    if (portInUse) {
-      throw new Error(`Could not start server, port ${vapid.config.port} is already in use.`);
-    }
+      if (portInUse) {
+        throw new Error(
+          `Could not start server, port ${vapid.config.port} is already in use.`,
+        );
+      }
 
-    Logger.info(`Starting the ${vapid.env} server...`);
-    await vapid.start();
-    Logger.extra([
-      `View your website at http://localhost:${vapid.config.port}`,
-      'Ctrl + C to quit',
-    ]);
-  }));
+      Logger.info(`Starting the ${vapid.env} server...`);
+      await vapid.start();
+      Logger.extra([
+        `View your website at http://localhost:${vapid.config.port}`,
+        'Ctrl + C to quit',
+      ]);
+    }),
+  );
 
 /**
  * deploy - publishes the website to the hosting platform
@@ -80,7 +84,7 @@ program
  */
 program
   .command('deploy')
-  .description('deploy to Vapid\'s hosting service')
+  .description("deploy to Vapid's hosting service")
   .action(async (target) => {
     const cwd = typeof target !== 'string' ? process.cwd() : target;
     const vapid = new VapidDeployer(cwd);
@@ -92,8 +96,7 @@ program
 /**
  * version - prints the current Vapid version number
  */
-program
-  .version(`Vapid ${pkg.version}`, '-v, --version');
+program.version(`Vapid ${pkg.version}`, '-v, --version');
 
 /**
  * version - prints the current Vapid version number
@@ -103,7 +106,8 @@ program
   .description('generate a static build of the site')
   .action(async (target, dest) => {
     const cwd = typeof target !== 'string' ? process.cwd() : target;
-    const destDir = typeof dist !== 'string' ? path.join(process.cwd(), 'dist') : dest;
+    const destDir =
+      typeof dist !== 'string' ? path.join(process.cwd(), 'dist') : dest;
     const vapid = new VapidBuilder(cwd);
     await vapid.initialize(cwd);
     await vapid.build(destDir);
@@ -113,12 +117,10 @@ program
 /**
  * catch all command - shows the help text
  */
-program
-  .command('*', { noHelp: true })
-  .action(() => {
-    Logger.error(`Command "${process.argv[2]}" not found.`);
-    program.help();
-  });
+program.command('*', { noHelp: true }).action(() => {
+  Logger.error(`Command "${process.argv[2]}" not found.`);
+  program.help();
+});
 
 /**
  * Read args, or show help
